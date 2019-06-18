@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPOSITORY = 'https://github.com/J-Lou/Gateway-Demo-Environment-Config'
+        GIT_REPOSITORY = 'https://github.com/J-Lou/Gateway-Demo-Deployment-Config'
         NEW_IMAGE_NAME = 'gateway'
         NEW_IMAGE_TAG = "${BUILD_NUMBER}"
         NEW_IMAGE_REGISTRY_REPOSITORY    = 'docker-hosted'
