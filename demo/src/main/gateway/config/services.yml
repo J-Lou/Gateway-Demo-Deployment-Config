@@ -1,0 +1,10 @@
+demo/jdbcQuery:
+  url: "/jdbcQuery"
+  policy: "demo/jdbcQuery"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false

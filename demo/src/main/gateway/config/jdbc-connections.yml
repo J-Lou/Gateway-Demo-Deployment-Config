@@ -1,0 +1,8 @@
+OAuth:
+  driverClass: "com.mysql.jdbc.Driver"
+  jdbcUrl: "jdbc:mysql://mysql-server:3306/otk"
+  properties:
+    EnableCancelTimeout: "true"
+  user: "gateway"
+  minimumPoolSize: 3
+  maximumPoolSize: 15

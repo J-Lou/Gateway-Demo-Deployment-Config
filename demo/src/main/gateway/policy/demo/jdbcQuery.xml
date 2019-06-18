@@ -1,0 +1,32 @@
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy" xmlns:L7p="http://www.layer7tech.com/ws/policy">
+    <wsp:All wsp:Usage="Required">
+        <L7p:JdbcQuery>
+            <L7p:AssertionComment assertionComment="included">
+                <L7p:Properties mapValue="included">
+                    <L7p:entry>
+                        <L7p:key stringValue="LEFT.COMMENT"/>
+                        <L7p:value stringValue="SEARCH"/>
+                    </L7p:entry>
+                    <L7p:entry>
+                        <L7p:key stringValue="RIGHT.COMMENT"/>
+                        <L7p:value stringValue="Checks the 'customers' table for IDs and names"/>
+                    </L7p:entry>
+                </L7p:Properties>
+            </L7p:AssertionComment>
+            <L7p:AssertionFailureEnabled booleanValue="false"/>
+            <L7p:ConnectionName stringValue="OAuth"/>
+            <L7p:ConvertVariablesToStrings booleanValue="false"/>
+            <L7p:GenerateXmlResult booleanValue="true"/>
+            <L7p:NamingMap mapValue="included">
+                <L7p:entry>
+                    <L7p:key stringValue="current_version"/>
+                    <L7p:value stringValue="version"/>
+                </L7p:entry>
+            </L7p:NamingMap>
+            <L7p:SqlQuery stringValue="select * from otk_version"/>
+        </L7p:JdbcQuery>
+        <L7p:HardcodedResponse>
+            <L7p:ResponseBody><![CDATA[${jdbcQuery.version}]]></L7p:ResponseBody>
+        </L7p:HardcodedResponse>
+    </wsp:All>
+</wsp:Policy>
