@@ -13,28 +13,42 @@ buildscript {
     dependencies {
         classpath "com.ca.apim.gateway:gateway-developer-plugin:0.8.+"
         classpath "com.ca.apim.gateway:gateway-export-plugin:0.8.+"
+        classpath "com.bmuschko:gradle-docker-plugin:4.6.2"
     }
 }
 
-apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
-apply plugin: 'com.ca.apim.gateway.gateway-developer-plugin'
+subprojects {
+    apply plugin: 'com.ca.apim.gateway.gateway-developer-plugin'
+    if (!project.name.equals('deployment')) {
+        apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
+        GatewayConnection {
+            url = 'https://localhost:8443/restman'
+        }
+    }
 
-group '<my.group.id>'
-version = '1.0.0'
+    group 'com.ca.apim.gateway'
+    version = '0.6.0'
 
-GatewayConnection {
-    url = 'https://localhost:8443/restman'
-}
-
-GatewayExportConfig {
-    folderPath = '/<project-folder>'
-}
-
-repositories {
-    mavenCentral()
-    jcenter()
+    repositories {
+        mavenLocal()
+        flatDir {
+            dirs new File(project.parent.rootDir, "lib")
+        }
+        jcenter()
+    }
 }
 
 wrapper {
-    gradleVersion = '4.10.2'
+    gradleVersion = '4.10'
+}
+//
+// Import task types
+import com.bmuschko.gradle.docker.tasks.image.*
+
+// Use task types
+task buildDockerImage(type: DockerBuildImage) {
+    apply plugin: 'com.bmuschko.docker-remote-api'
+    inputDir.set(file('./'))
+    tags.add(System.getProperty("imageName")+ ":" + System.getProperty("imageTag"))
+    pull.set(true)
 }

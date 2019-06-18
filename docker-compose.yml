@@ -13,7 +13,7 @@ services:
     - "8000:8000"
     volumes:
     - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
-    - ./build/gateway/<project.name>-1.0.0.gw7:/opt/docker/rc.d/deployment.gw7
+    - ./deployment/build/gateway/deployment-0.6.0.gw7:/opt/docker/rc.d/deployment.gw7
     secrets:
     - source: license
       target: /opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
@@ -21,6 +21,17 @@ services:
       ACCEPT_LICENSE: "true"
       SSG_ADMIN_USERNAME: "admin"
       SSG_ADMIN_PASSWORD: "password"
+      ENV.JDBC_CONNECTION.OAuth: '{
+                                      "driverClass": "com.mysql.jdbc.Driver",
+                                      "jdbcUrl": "jdbc:mysql://mysql-server:3306/otk",
+                                      "properties": {
+                                        "EnableCancelTimeout": "true"
+                                      },
+                                      "user": "gateway",
+                                      "password": "7layer",
+                                      "minimumPoolSize": 3,
+                                      "maximumPoolSize": 15
+                                    }'
 secrets:
   license:
     file: ./docker/license.xml
