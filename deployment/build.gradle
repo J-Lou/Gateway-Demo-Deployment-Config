@@ -6,4 +6,8 @@
 
 dependencies {
     bundle project(':demo')
+    bundle group: 'otk', name: 'otk-single-jdbc', version: '5.0.0-SNAPSHOT-full', ext: 'bundle'
+    customassertion group: 'otk-ResponseTypeSupportedCheckAssertion', name: 'otk-ResponseTypeSupportedCheckAssertion', ext: 'jar', version: '5.0.0-SNAPSHOT'
+    customassertion group: 'otk-DateFormatStringAssertion', name: 'otk-DateFormatStringAssertion', ext: 'jar', version: '5.0.0-SNAPSHOT'
+    customassertion group: 'otk-ScopeIssuingAndVerificationAssertions', name: 'otk-ScopeIssuingAndVerificationAssertions', ext: 'jar', version: '5.0.0-SNAPSHOT'
 }
