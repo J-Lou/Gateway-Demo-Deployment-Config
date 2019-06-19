@@ -9,7 +9,7 @@
                     </L7p:entry>
                     <L7p:entry>
                         <L7p:key stringValue="RIGHT.COMMENT"/>
-                        <L7p:value stringValue="Checks the 'customers' table for IDs and names"/>
+                        <L7p:value stringValue="Hit OTK database for version"/>
                     </L7p:entry>
                 </L7p:Properties>
             </L7p:AssertionComment>
