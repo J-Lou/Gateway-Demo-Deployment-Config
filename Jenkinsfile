@@ -12,6 +12,7 @@ pipeline {
         stage('Pull from Git') {
             steps {
                 git "${env.GIT_REPOSITORY}"
+                sh '''git checkout build'''
             }
         }
         stage('Gradle Preparation & Build') {
