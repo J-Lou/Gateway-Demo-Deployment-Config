@@ -9,7 +9,7 @@
                     </L7p:entry>
                     <L7p:entry>
                         <L7p:key stringValue="RIGHT.COMMENT"/>
-                        <L7p:value stringValue="Checks the 'customers' table for IDs and names"/>
+                        <L7p:value stringValue="demoss"/>
                     </L7p:entry>
                 </L7p:Properties>
             </L7p:AssertionComment>
@@ -25,6 +25,10 @@
             </L7p:NamingMap>
             <L7p:SqlQuery stringValue="select * from otk_version"/>
         </L7p:JdbcQuery>
+        <L7p:AuditDetailAssertion>
+            <L7p:Detail stringValue="${jdbcQuery.version}"/>
+            <L7p:LoggingOnly booleanValue="true"/>
+        </L7p:AuditDetailAssertion>
         <L7p:HardcodedResponse>
             <L7p:ResponseBody><![CDATA[${jdbcQuery.version}]]></L7p:ResponseBody>
         </L7p:HardcodedResponse>

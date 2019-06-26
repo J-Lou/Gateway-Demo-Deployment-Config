@@ -6,4 +6,4 @@
 
 rootProject.name = 'Beta-Demo'
 
-include 'deployment', 'demo'
+include 'deployment', 'demo', 'example'
