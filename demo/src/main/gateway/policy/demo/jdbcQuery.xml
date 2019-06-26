@@ -26,7 +26,7 @@
             <L7p:SqlQuery stringValue="select * from otk_version"/>
         </L7p:JdbcQuery>
         <L7p:AuditDetailAssertion>
-            <L7p:Detail stringValue="${jdbcQuery.version}"/>
+            <L7p:Detail stringValue="${jdbcQuery.version} - demo"/>
             <L7p:LoggingOnly booleanValue="true"/>
         </L7p:AuditDetailAssertion>
         <L7p:HardcodedResponse>
